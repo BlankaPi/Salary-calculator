@@ -1,0 +1,241 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
+
+:root {
+    --text-color: #333;
+    --text-color-alt: #fff;
+    
+
+    --color-green: #37af65;
+    --color-yellow: #dae75e;
+    --color-pink: #ffc0cb;
+    --color-blue: #add8e6;
+    --color-darkblue: #1b75bc;
+    --color-orange: #ffa500;
+}
+
+* ,
+*::after,
+*::before {
+    padding: 0px;
+    margin: 0px;
+    font-family: inherit;
+    box-sizing: border-box;
+} 
+
+html {
+    font-family: "Poppins", monospace, sans-serif;
+    font-size: 16px;
+}
+
+
+/* INPUT AND FORM */
+
+h1 {
+    font-size: 2rem;
+    margin: 4rem auto 0;
+    text-align: center;
+    /* text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4); */
+}
+
+#description {
+    margin: 0.5rem auto;
+    font-size: 0.8rem;
+    text-align: center;
+    font-style: italic;
+}
+
+#calc-form, header {
+    width: 75vw;
+    max-width: 600px;
+    min-width: 300px;
+    margin: 2rem auto 4rem;
+}
+
+#salary {
+    width: 100%;
+    margin-bottom: 0.5rem;
+}
+
+#salary:focus {
+    border-color: white;
+    outline: 0;
+    box-shadow: 0 0 0.1rem 0.1rem var(--color-green);;
+}
+
+fieldset {
+    border: none;
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#contract-type {
+    justify-content: space-between;
+}
+
+label {
+    display: block;
+}
+
+.br-net {
+    padding-right: 2rem;
+} 
+
+
+p, #label-salary {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+
+#submit {
+    display: block;
+    margin: 2rem auto;
+    width: 30%;
+    min-width: 300px;
+    padding: 0.2rem;
+    background-color: var(--color-green);
+    border-radius: 22px;
+    cursor: pointer;
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: var(--text-color-alt);
+    border: none;
+    transition: 0.3s ease;
+}
+
+#submit:hover {
+    background-color: var(--color-darkblue);
+}
+
+@media screen and (max-width:700px) {
+    #contract-type, fieldset {
+        display: block;
+    }
+}
+
+/* RESULTS */
+
+.result-calculator {
+    margin: 0 auto 4rem;
+}
+
+table {
+    margin: 0 auto;
+    width: 75vw;
+    max-width: 600px;
+    min-width: 300px;
+    margin: 2rem auto;
+    caption-side: bottom;
+    border-collapse: collapse;
+}
+
+tbody, td, th, thead, tr {
+    border-bottom: 1px solid #333;
+    padding: 0.5rem 0 0.5rem;
+}
+
+th {
+    font-weight: inherit;
+    text-align: left;
+    font-style: italic;
+}
+
+.label-netto, .label-brutto, .amount-netto, .amount-brutto {
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+
+.amount-netto, .amount-brutto {
+    text-align: right;
+}
+
+.amount {
+    text-align: right;
+}
+
+.clear {
+    border-bottom: 0;
+}
+
+.color {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align:middle;
+}
+
+
+.salary-color {
+    background-color: var(--color-darkblue);
+    width: 1.5rem;
+    height: 1.5rem;
+}
+.retirement-color {
+    background-color: var(--color-blue);
+}
+.disability-color {
+    background-color: var(--color-green);
+}
+.disease-color {
+    background-color: var(--color-pink);
+}
+.health-color {
+    background-color: var(--color-yellow);
+}
+.tax-color {
+    background-color: var(--color-orange);
+}
+
+
+/* PIE CHART */
+
+#piechart {
+    margin: 5rem auto;
+    display: block;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background-image: conic-gradient(
+        var(--color-blue) 0 36deg, 
+        var(--color-green) 0 43deg, 
+        var(--color-pink) 0 52deg,
+        var(--color-yellow) 0 84deg,
+        var(--color-orange) 0 98deg,
+        var(--color-darkblue) 0);
+}
+
+@media screen and (max-width:500px) {
+    .chart {
+        min-width: 300px;
+    }
+
+    .label, th {
+        font-size: 0.85rem;
+    }
+
+    .label-netto, .label-brutto {
+        font-size: 1.25rem;
+    }
+}
+
+.chart {
+    margin-top: 3rem;
+    visibility: visible;
+    position: relative;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.unvisible {
+    display: none;
+}
+
+

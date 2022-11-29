@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salary calculator</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <script src="https://kit.fontawesome.com/139dc65360.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js"></script>
+</head>
+<body>
+
+    <header>
+        <h1 id="title">Kalkulator wynagrodzeń netto/brutto 
+            <i class="fa-sharp fa-solid fa-calculator fa-1x"></i>
+        </h1>
+        
+        <p id="description">
+            Od Lipca 2022 r. (Polski Ład 2.0)
+        </p>
+    </header>
+
+    <main>
+
+        <form action="" id="calc-form">            
+            
+            <label id="label-salary" for="salary">
+                Podaj wysokość swojego wynagrodzenia:                    
+            </label>
+            <input type="text" name="salary" id="salary" required>
+
+            <fieldset>
+                <label for="brutto" class="label-radio br-net"> 
+                    <input id="brutto" value="brutto" name="brutto-netto" type="radio" required>
+                    brutto
+                </label>
+
+                <label for="netto" class="label-radio br-net"> 
+                    <input id="netto" value="netto" name="brutto-netto" type="radio" required>
+                    netto (na rękę)
+                </label>
+            </fieldset>
+
+            <p>Wybierz rodzaj umowy:</p>
+            <fieldset id="contract-type">                
+                <label for="uop" class="label-radio"> 
+                    <input id="uop" value="uop" name="contract-type" type="radio" required>
+                    umowa o pracę
+                </label>
+
+                <label for="uz" class="label-radio"> 
+                    <input id="uz" value="uz" name="contract-type" type="radio" required>
+                    umowa zlecenie
+                </label>
+
+                <label for="uod" class="label-radio"> 
+                    <input id="uod" value="uod" name="contract-type" type="radio" required>
+                    umowa o dzieło
+                </label>
+
+                <label for="btob" class="label-radio"> 
+                    <input id="btob" value="btob" name="contract-type" type="radio" required>
+                    umowa B2B
+                </label>
+            </fieldset>
+
+            <input type="submit" id="submit" value="Oblicz">
+
+        </form>
+
+        <div class="result-calculator unvisible">            
+
+            <table class="calculator-main-data">
+                <tbody>
+                    <tr class="salary-label">
+                        <td class="label label-netto">
+                            <span class="color salary-color"></span>
+                            Twoja wypłata (kwota netto):</td>
+                        <td class="amount-netto"></td>
+                    </tr>
+                    <tr>
+                        <th>Pobierane opłaty</th>
+                    </tr>
+                    <tr>
+                        <td class="label">
+                            <span class="color retirement-color"></span> 
+                            Ubezpieczenie emerytalne
+                        </td>
+                        <td class="amount retirement"></td>
+                    </tr>
+                    <tr>
+                        <td class="label">
+                            <span class="color disability-color"></span> 
+                            Ubezpieczenie rentowe
+                        </td>
+                        <td class="amount disability"></td>
+                    </tr>
+                    <tr>
+                        <td class="label">
+                            <span class="color disease-color"></span> 
+                            Ubezpieczenie chorobowe
+                        </td>
+                        <td class="amount disease"></td>
+                    </tr>
+                    <tr>
+                        <td class="label">
+                            <span class="color health-color"></span> 
+                            Ubezpieczenie zdrowotne
+                        </td>
+                        <td class="amount health"></td>
+                    </tr>
+                    <tr>
+                        <td class="label">
+                            <span class="color tax-color"></span> 
+                            Zaliczka na podatek
+                        </td>
+                        <td class="amount tax"></td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr class="clear">
+                        <td class="label label-brutto clear">
+                            Całość stanowi kwotę (brutto):
+                        </td>
+                        <td class="amount-brutto clear"></td>
+                    </tr>
+                </tfoot>
+            </table>
+
+            <!-- <div id="piechart"></div> -->
+
+            <div id = "chart1" class="chart unvisible">
+                <canvas id="doughnut-chart1" width="700" height="450"></canvas>
+            </div>
+            <div id = "chart2" class="chart unvisible">
+                <canvas id="doughnut-chart2" width="700" height="450"></canvas>
+            </div>
+            <div id = "chart3" class="chart unvisible">
+                <canvas id="doughnut-chart3" width="700" height="450"></canvas>
+            </div>
+            <div id = "chart4" class="chart unvisible">
+                <canvas id="doughnut-chart4" width="700" height="450"></canvas>
+            </div>
+            
+        </div>
+
+    </main>
+
+    <script src="script.js"></script>
+
+    
+</body>
+</html>
