@@ -197,20 +197,6 @@ th {
 
 /* PIE CHART */
 
-#piechart {
-    margin: 5rem auto;
-    display: block;
-    width: 400px;
-    height: 400px;
-    border-radius: 50%;
-    background-image: conic-gradient(
-        var(--color-blue) 0 36deg, 
-        var(--color-green) 0 43deg, 
-        var(--color-pink) 0 52deg,
-        var(--color-yellow) 0 84deg,
-        var(--color-orange) 0 98deg,
-        var(--color-darkblue) 0);
-}
 
 @media screen and (max-width:500px) {
     .chart {

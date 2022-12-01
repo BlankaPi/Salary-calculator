@@ -20,13 +20,11 @@ const healthOutput = document.querySelector(".health");
 const taxOutput = document.querySelector(".tax");
 
 // OUTPUT donut
-const chart1 = document.querySelector("#chart1");
-const chart2 = document.querySelector("#chart2");
-const chart3 = document.querySelector("#chart3");
-const chart4 = document.querySelector("#chart4");
+const chart = document.querySelector("#piechart");
 const resultSection = document.querySelector(".result-calculator")
 
 submitButton.addEventListener("click", calculate);
+
 
 function calculate(){
   console.log("Calculator working");
@@ -170,40 +168,9 @@ function calculate(){
   }
 }; 
 
-
-submitButton.addEventListener("click", () => {
-  resultSection.classList.remove("unvisible");
-
-  
-  for(const button2 of radioButtonsContract) {
-    if(button2.checked && button2.value == "uop") {
-      chart1.classList.remove("unvisible");
-    }
-  } 
-  
-  for(const button2 of radioButtonsContract) {
-    if(button2.checked && button2.value == "uz") {
-      chart2.classList.remove("unvisible");
-    }
-  } 
-
-  for(const button2 of radioButtonsContract) {
-    if(button2.checked && button2.value == "uod") {
-      chart3.classList.remove("unvisible");
-    }
-  } 
-
-  for(const button2 of radioButtonsContract) {
-    if(button2.checked && button2.value == "btob") {
-      chart4.classList.remove("unvisible");
-    }
-  } 
-});
-
-
-
 // DONUT CHART  
 
+// CONTRACT TYPE = UoP
 let labelsUoP = [
   "Ubezpieczenie emerytalne", 
   "Ubezpieczenie rentowe", 
@@ -213,7 +180,7 @@ let labelsUoP = [
   "Twoja wypłata"
 ];
 
-let dataUop = [
+let dataUoP = [
   9.76, 
   1.5,
   2.45,
@@ -222,7 +189,7 @@ let dataUop = [
   73.53
 ]
 
-let colorsUop = [
+let colorsUoP = [
   "#ADD8E6",
   "#37AF65",
   "#FFC0CB",
@@ -231,30 +198,7 @@ let colorsUop = [
   "#1B75BC"
 ]
 
-let donut1 = new Chart(document.getElementById("doughnut-chart1"), {
-  type: 'doughnut',
-  data: {
-    labels: labelsUoP,
-    datasets: [
-      {
-        backgroundColor: colorsUop,
-        data: dataUop
-      }
-    ]
-  },
-  options: {
-    title: {
-      display: true,
-      text: "Procentowy udział:"
-    },
-    legend: {
-      display: false
-    }
-  }
-});
-
-
-
+// CONTRACT TYPE = Uz
 let labelsUz = [
   "Ubezpieczenie emerytalne", 
   "Ubezpieczenie rentowe", 
@@ -279,7 +223,65 @@ let colorsUz = [
   "#1B75BC"
 ]
 
-let donut2 = new Chart(document.getElementById("doughnut-chart2"), {
+// CONTRACT TYPE = UoD
+let labelsUoD = [
+  "Zaliczka na podatek",
+  "Twoja wypłata"
+];
+
+let dataUoD = [
+  13.6,
+  86.4
+]
+
+let colorsUoD = [
+  "#FFA500",
+  "#1B75BC"
+]
+
+// CONTRACT TYPE = btob
+let labelsBtoB = [
+  "Ubezpieczenie zdrowotne", 
+  "Zaliczka na podatek",
+  "Twoja wypłata"
+];
+
+let dataBtoB = [
+  5.42,
+  17.98,
+  76.6
+]
+
+let colorsBtoB = [
+  "#DAE75E",
+  "#FFA500",
+  "#1B75BC"
+]
+
+
+const options1 = {
+  type: 'doughnut',
+  data: {
+    labels: labelsUoP,
+    datasets: [
+      {
+        backgroundColor: colorsUoP,
+        data: dataUoP
+      }
+    ]
+  },
+  options: {
+    title: {
+      display: true,
+      text: "Procentowy udział:"
+    },
+    legend: {
+      display: false
+    }
+  }
+};
+
+const options2 = {
   type: 'doughnut',
   data: {
     labels: labelsUz,
@@ -299,26 +301,9 @@ let donut2 = new Chart(document.getElementById("doughnut-chart2"), {
       display: false
     }
   }
-});
+};
 
-
-
-let labelsUoD = [
-  "Zaliczka na podatek",
-  "Twoja wypłata"
-];
-
-let dataUoD = [
-  13.6,
-  86.4
-]
-
-let colorsUoD = [
-  "#FFA500",
-  "#1B75BC"
-]
-
-let donut3 = new Chart(document.getElementById("doughnut-chart3"), {
+const options3 = {
   type: 'doughnut',
   data: {
     labels: labelsUoD,
@@ -338,28 +323,9 @@ let donut3 = new Chart(document.getElementById("doughnut-chart3"), {
       display: false
     }
   }
-});
+};
 
-
-let labelsBtoB = [
-  "Ubezpieczenie zdrowotne", 
-  "Zaliczka na podatek",
-  "Twoja wypłata"
-];
-
-let dataBtoB = [
-  5.42,
-  17.98,
-  76.6
-]
-
-let colorsBtoB = [
-  "#DAE75E",
-  "#FFA500",
-  "#1B75BC"
-]
-
-let donut4 = new Chart(document.getElementById("doughnut-chart4"), {
+const options4 = {
   type: 'doughnut',
   data: {
     labels: labelsBtoB,
@@ -379,4 +345,74 @@ let donut4 = new Chart(document.getElementById("doughnut-chart4"), {
       display: false
     }
   }
+};
+
+
+
+submitButton.addEventListener("click", () => {
+  resultSection.classList.remove("unvisible");
+
+   /*  SWITCH NOT WORKING - SHOWING ONLY LAST CHART
+   
+   for(const button2 of radioButtonsContract) {
+   let donut;
+    switch (button2.value) {
+      case "uop":
+        donut = new Chart(document.getElementById("doughnut-chart"), options1);
+        break;
+      case "uz":
+        donut = new Chart(document.getElementById("doughnut-chart"), options2);
+        break;
+      case "uod":
+        donut = new Chart(document.getElementById("doughnut-chart"), options3);
+        break;
+      case "btob":
+        donut = new Chart(document.getElementById("doughnut-chart"), options4);
+        break;
+    }
+  } 
+
+  IF ELSE NOT WORKING - SHOWING ONLY LAST CHART
+  for(const button2 of radioButtonsContract) {
+    if (button2.value == "uop") {
+      let donut = new Chart(document.getElementById("doughnut-chart"), options1);
+    } else if (button2.value == "uz") {
+      let donut = new Chart(document.getElementById("doughnut-chart"), options2);
+    } else if (button2.value == "uod") {
+      let donut = new Chart(document.getElementById("doughnut-chart"), options3);
+    } else if (button2.value == "btob") {
+      let donut = new Chart(document.getElementById("doughnut-chart"), options4);
+    }
+  } 
+
+  */
+
+  for(const button2 of radioButtonsContract) {
+    if(button2.checked && button2.value == "uop") {
+      let donut = new Chart(document.getElementById("doughnut-chart"), options1);
+    }
+  } 
+
+  for(const button2 of radioButtonsContract) {
+    if(button2.checked && button2.value == "uz") {
+      let donut = new Chart(document.getElementById("doughnut-chart"), options2);
+    }
+  } 
+
+  for(const button2 of radioButtonsContract) {
+    if(button2.checked && button2.value == "uod") {
+      let donut = new Chart(document.getElementById("doughnut-chart"), options3);
+    }
+  } 
+
+  for(const button2 of radioButtonsContract) {
+    if(button2.checked && button2.value == "btob") {
+      let donut = new Chart(document.getElementById("doughnut-chart"), options4);
+    }
+  } 
+
 });
+
+
+
+
