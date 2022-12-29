@@ -93,12 +93,15 @@ p, #label-salary {
     margin-bottom: 0.5rem;
 }
 
+.buttons {
+    display: flex;
+    justify-content:  center;
+    align-items: center;
+}
 
-#submit {
+#submit, #reset {
     display: block;
-    margin: 2rem auto;
-    width: 30%;
-    min-width: 300px;
+    margin: 2rem 0.5rem;
     padding: 0.2rem;
     background-color: var(--color-green);
     border-radius: 22px;
@@ -110,8 +113,22 @@ p, #label-salary {
     transition: 0.3s ease;
 }
 
-#submit:hover {
+#submit{    
+    width: 300px;
+    min-width: 250px;    
+}
+
+#reset {
+    width: 42px;
+    min-width: 42px; 
+    background-color: lightgray;
+}
+
+#submit:hover{
     background-color: var(--color-darkblue);
+}
+#reset:hover {
+    background-color: gray;
 }
 
 @media screen and (max-width:700px) {
